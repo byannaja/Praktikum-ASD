@@ -17,7 +17,7 @@ public class DosenDemo17 {
         kode = sc.nextLine();
         System.out.print("Nama               : ");
         nama = sc.nextLine();
-        System.out.print("Jenis Kelamin (P/L): ");
+        System.out.print("Jenis Kelamin (P/W): ");
         dummy = sc.nextLine();
 
         if (dummy.equalsIgnoreCase("P")){
@@ -33,18 +33,17 @@ public class DosenDemo17 {
         }
     for (Dosen17 dsn : arrDosen17){
 
-        String jk;
-        if (dsn.jenisKelamin){
-            jk = "Wanita";
-        }
-        else {
-            jk = "Pria";
-        }
         System.out.println("Kode          : "+dsn.kode);
         System.out.println("Nama          : "+dsn.nama);
-        System.out.println("Jenis Kelamin : "+jk);
+        System.out.println("Jenis Kelamin : "+dsn.jenisKelamin);
         System.out.println("Usia          : "+dsn.usia);
         System.out.println("-------------------------------");
     }
+        DataDosen17 dt = new DataDosen17();
+        dt.dataSemuaDosen(arrDosen17);
+        dt.jumlahDosenPerJenisKelamin(arrDosen17);
+        dt.rerataUsiaDosenPerJenisKelamin(arrDosen17);
+        dt.infoDosenPalingTua(arrDosen17);
+        dt.infoDosenPalingMuda(arrDosen17);
    sc.close(); }
 }
