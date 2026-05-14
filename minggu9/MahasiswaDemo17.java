@@ -1,0 +1,86 @@
+import java.util.Scanner;
+
+public class MahasiswaDemo17 {
+    public static void main(String[] args) {
+        StackTugasMahasiswa17 stack = new StackTugasMahasiswa17(5);
+        Scanner scan = new Scanner(System.in);
+        int pilih;
+
+        do {
+            System.out.println("\nMenu:");
+            System.out.println("1. Mengumpulkan Tugas");
+            System.out.println("2. Menilai Tugas");
+            System.out.println("3. Melihat Tugas Teratas");
+            System.out.println("4. Melihat Daftar Tugas");
+
+            // Perubahan No 4
+            System.out.println("5. Melihat Tugas Pertama (Terbawah)");
+
+            // Perubahan No 5
+            System.out.println("6. Melihat Jumlah Tugas Terkumpul");
+
+            System.out.print("Pilih: ");
+            pilih = scan.nextInt();
+            scan.nextLine();
+
+            switch (pilih) {
+                case 1:
+                    System.out.print("Nama: ");
+                    String nama = scan.nextLine();
+                    System.out.print("NIM: ");
+                    String nim = scan.nextLine();
+                    System.out.print("Kelas: ");
+                    String kelas = scan.nextLine();
+                    Mahasiswa17 mhs = new Mahasiswa17(nama, nim, kelas);
+                    stack.push(mhs);
+                    System.out.printf("Tugas %s berhasil dikumpulkan\n", mhs.nama);
+                    break;
+
+                case 2:
+                    Mahasiswa17 dinilai = stack.pop();
+                    if (dinilai != null) {
+                        System.out.println("Menilai tugas dari " + dinilai.nama);
+                        System.out.print("Masukkan nilai (0-100): ");
+                        int nilai = scan.nextInt();
+                        dinilai.tugasDinilai(nilai);
+                        System.out.printf("Nilai Tugas %s adalah %d\n", dinilai.nama, nilai);
+                        String biner = stack.konversiDesimalKeBiner(nilai);
+                        System.out.println("Nilai Biner Tugas: " + biner);
+                    }
+                    break;
+
+                case 3:
+                    Mahasiswa17 lihat = stack.peek();
+                    if (lihat != null) {
+                        System.out.println("Tugas terakhir dikumpulkan oleh " + lihat.nama);
+                    }
+                    break;
+
+                // Perubahan No 1
+                case 4:
+                    System.out.println("\nDaftar Tugas Mahasiswa:");
+                    System.out.println("Nama\tNIM\tKelas");
+                    System.out.println("------------------------------");
+                    stack.print();
+                    break;
+
+                // Perubahan No 4
+                case 5:
+                    Mahasiswa17 bawah = stack.peekBottom();
+                    if (bawah != null) {
+                        System.out.println("Tugas pertama dikumpulkan oleh " + bawah.nama);
+                    }
+                    break;
+
+                // Perubahan No 5
+                case 6:
+                    System.out.println("Jumlah tugas yang sudah dikumpulkan: " + stack.jumlahTugas());
+                    break;
+
+                default:
+                    System.out.println("Pilihan tidak valid.");
+            }
+
+        } while (pilih >= 1 && pilih <= 6);
+    }
+}
