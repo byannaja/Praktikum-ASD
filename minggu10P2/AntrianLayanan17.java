@@ -55,13 +55,26 @@ public class AntrianLayanan17 {
         }
     }
 
+    // modifikasi 2.2.3
+    public void lihatAkhir() {
+        if (isEmpty()) {
+            System.out.println("Antrian kosong.");
+        } else {
+            System.out.print("Mahasiswa paling belakang: ");
+            System.out.println("NIM - NAMA - PRODI - KELAS");
+            data[rear].tampilkanData();
+        }
+    }
+
     public void tampilkanSemua() {
         if (isEmpty()) {
             System.out.println("Antrian kosong.");
             return;
         }
+
         System.out.println("Daftar Mahasiswa dalam Antrian:");
         System.out.println("NIM - NAMA - PRODI - KELAS");
+
         for (int i = 0; i < size; i++) {
             int index = (front + i) % max;
             System.out.print((i + 1) + ". ");

@@ -51,7 +51,12 @@ public class QueueMain17 {
                 case 5:
                     Q.clear();
                     break;
+
+                default:
+                    System.out.println("Menu tidak tersedia");
             }
         } while (pilih >= 1 && pilih <= 5);
+
+        sc.close();
     }
 }
