@@ -1,29 +1,46 @@
 package minggu11;
 
+import java.util.Scanner; // modifikasi 2.1.2
+
 public class SLLMain17 {
     public static void main(String[] args) {
+
         SingleLinkedList17 sll = new SingleLinkedList17();
 
-        Mahasiswa17 mhs1 = new Mahasiswa17("24212200", "Alvaro", "1A", 4.0);
-        Mahasiswa17 mhs2 = new Mahasiswa17("23212201", "Bimon", "2B", 3.8);
-        Mahasiswa17 mhs3 = new Mahasiswa17("22212202", "Cintia", "3C", 3.5);
-        Mahasiswa17 mhs4 = new Mahasiswa17("21212203", "Dirga", "4O", 3.6);
+        // modifikasi 2.1.2
+        Scanner sc = new Scanner(System.in);
 
-        sll.addFirst(mhs4);
-        sll.addLast(mhs1);
-        sll.insertAfter("Dirga", mhs3);
-        sll.insertAt(2, mhs2);
+        // modifikasi 2.1.2
+        System.out.print("Jumlah mahasiswa yang akan ditambahkan: ");
+        int jumlah = sc.nextInt();
+        sc.nextLine();
 
-        System.out.println("data index 1: ");
-        sll.getData(1);
-        System.out.println("data mahasiswa an Bimon berada pada index: " + sll.indexOf("bimon"));
-        System.out.println("");
+        // modifikasi 2.1.2
+        for (int i = 0; i < jumlah; i++) {
 
-        sll.removeFirst();
-        sll.removeLast();
+            System.out.println("\nData Mahasiswa ke-" + (i + 1));
+
+            System.out.print("NIM   : ");
+            String nim = sc.nextLine();
+
+            System.out.print("Nama  : ");
+            String nama = sc.nextLine();
+
+            System.out.print("Kelas : ");
+            String kelas = sc.nextLine();
+
+            System.out.print("IPK   : ");
+            double ipk = sc.nextDouble();
+            sc.nextLine();
+
+            Mahasiswa17 mhs = new Mahasiswa17(nim, nama, kelas, ipk);
+
+            // modifikasi 2.1.2
+            sll.addLast(mhs);
+        }
+
         sll.print();
 
-        sll.removeAt(0);
-        sll.print();
+        sc.close(); // modifikasi 2.1.2
     }
 }
